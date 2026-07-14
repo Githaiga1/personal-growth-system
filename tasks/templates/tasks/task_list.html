@@ -17,6 +17,7 @@
                     {{ task.title }} - Due: {{ task.due_date }}
                     <a href="{% url 'task_complete' task.id %}">Mark Complete</a>
                 {% endif %}
+                <a href="{% url 'task_edit' task.id %}">Edit</a>
             </li>
         {% endfor %}
     </ul>
