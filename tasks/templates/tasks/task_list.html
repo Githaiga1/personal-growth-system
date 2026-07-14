@@ -6,9 +6,18 @@
 <body>
     <h1>My Tasks</h1>
 
+    <a href="{% url 'task_create' %}">+ New Task</a>
+
     <ul>
         {% for task in tasks %}
-            <li>{{ task.title }} - Due: {{ task.due_date }}</li>
+            <li>
+                {% if task.is_completed %}
+                    <strike>{{ task.title }}</strike> - Due: {{ task.due_date }} (Completed)
+                {% else %}
+                    {{ task.title }} - Due: {{ task.due_date }}
+                    <a href="{% url 'task_complete' task.id %}">Mark Complete</a>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 </body>
