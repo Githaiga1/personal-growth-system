@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Task</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
     <h1>Delete Task</h1>
 
     <p>Are you sure you want to delete "{{ task.title }}"? This cannot be undone.</p>
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Yes, Delete</button>
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
     </form>
 
-    <a href="{% url 'task_list' %}">Cancel</a>
-</body>
-</html>
+    <a href="{% url 'task_list' %}" class="btn btn-link">Cancel</a>
+{% endblock %}
