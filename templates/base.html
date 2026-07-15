@@ -11,6 +11,17 @@
         <div class="container">
             <a class="navbar-brand" href="{% url 'task_list' %}">Personal Growth System</a>
         </div>
+            {% if user.is_authenticated %}
+                <span class="text-light me-2">Hello, {{ user.username }}</span>
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm">Login</a>
+            {% endif %}
+            </div>
+         </div>   
     </nav>
 
     <div class="container mt-4">
